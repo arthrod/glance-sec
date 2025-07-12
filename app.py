@@ -1,6 +1,5 @@
 import os
 import streamlit as st
-import random
 import time
 import base64
 from lawglance_main import Lawglance
@@ -9,6 +8,7 @@ from langchain_chroma import Chroma
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from dotenv import load_dotenv
 from langchain.schema import HumanMessage
+import secrets
 
 # Set page configuration
 st.set_page_config(page_title="LawGlance", page_icon="logo/logo.png", layout="wide")
@@ -174,7 +174,7 @@ if prompt:
 
     # Assistant's response
     def response_generator(result):
-        response = random.choice([result])
+        response = secrets.choice([result])
         for word in response.split():
             yield word + " "
             time.sleep(0.05)
